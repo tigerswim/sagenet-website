@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { ROIInputs, ROIResults } from '../../types';
@@ -98,7 +98,7 @@ const MarketingROICalculator: React.FC = () => {
 
   const [results, setResults] = useState<ROIResults | null>(null);
 
-  const calculateROI = () => {
+  const calculateROI = useCallback(() => {
     // Based on industry research: 15% average sales lift with digital signage
     const salesLift = 0.15;
     const monthlyTransactions = inputs.locations * 1000; // Estimate 1000 transactions per location per month
@@ -118,11 +118,11 @@ const MarketingROICalculator: React.FC = () => {
       paybackPeriod,
       roi
     });
-  };
+  }, [inputs]);
 
   useEffect(() => {
     calculateROI();
-  }, [inputs]);
+  }, [calculateROI]);
 
   const handleInputChange = (field: keyof ROIInputs, value: string) => {
     setInputs(prev => ({
