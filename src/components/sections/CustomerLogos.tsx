@@ -13,7 +13,7 @@ const scroll = keyframes`
 
 const LogosSection = styled.section`
   background: ${props => props.theme.colors.gray[50]};
-  padding: ${props => props.theme.spacing.md} 0 ${props => props.theme.spacing.xl} 0;
+  padding: ${props => props.theme.spacing.sm} 0 ${props => props.theme.spacing.lg} 0;
 `;
 
 const LogosContainer = styled.div`
@@ -57,15 +57,15 @@ const LogoItem = styled(motion.div)`
 
 const TestimonialSection = styled(motion.div)`
   max-width: 800px;
-  margin: ${props => props.theme.spacing.xl} auto 0;
-  padding: 0 ${props => props.theme.spacing.lg};
+  margin: ${props => props.theme.spacing.lg} auto 0;
+  padding: 0 ${props => props.theme.spacing.md};
   text-align: center;
 `;
 
 const TestimonialQuote = styled.blockquote`
-  background: ${props => props.theme.colors.gray[900]};
+  background: ${props => props.theme.colors.navy[900]};
   color: ${props => props.theme.colors.white};
-  padding: ${props => props.theme.spacing.xl} ${props => props.theme.spacing.xl};
+  padding: ${props => props.theme.spacing.lg} ${props => props.theme.spacing.lg};
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: ${props => props.theme.fontSizes['2xl']};
   font-style: italic;
@@ -77,6 +77,7 @@ const TestimonialQuote = styled.blockquote`
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
+  border-radius: ${props => props.theme.borderRadius['2xl']};
 
   &::before {
     content: '';

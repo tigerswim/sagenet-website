@@ -6,7 +6,7 @@ import Button from '../common/Button';
 const Section = styled.section`
   background: linear-gradient(135deg, ${props => props.theme.colors.navy[900]} 0%, ${props => props.theme.colors.navy[800]} 100%);
   color: ${props => props.theme.colors.white};
-  padding: ${props => props.theme.spacing.xl} 0;
+  padding: ${props => props.theme.spacing.md} 0;
   position: relative;
   overflow: hidden;
 `;
@@ -20,8 +20,9 @@ const Container = styled.div`
 `;
 
 const SectionHeader = styled(motion.div)`
-  text-align: center;
-  margin-bottom: ${props => props.theme.spacing.xl};
+  text-align: left;
+  margin-bottom: ${props => props.theme.spacing.lg};
+  max-width: 800px;
 `;
 
 const Headline = styled.h2`
@@ -29,25 +30,19 @@ const Headline = styled.h2`
   font-weight: ${props => props.theme.fontWeights.bold};
   margin-bottom: ${props => props.theme.spacing.lg};
   line-height: 1.2;
+  color: ${props => props.theme.colors.white};
 `;
 
 const Subtext = styled.p`
   font-size: ${props => props.theme.fontSizes.xl};
   color: ${props => props.theme.colors.gray[200]};
   line-height: 1.6;
-  max-width: 700px;
-  margin: 0 auto ${props => props.theme.spacing.xl};
 `;
 
 const AdvantageGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: ${props => props.theme.spacing.xl};
+  display: flex;
+  justify-content: center;
   margin-bottom: ${props => props.theme.spacing.xl};
-
-  @media (max-width: ${props => props.theme.breakpoints.lg}) {
-    grid-template-columns: 1fr;
-  }
 `;
 
 const AdvantageCard = styled(motion.div)`
@@ -56,12 +51,32 @@ const AdvantageCard = styled(motion.div)`
   border-radius: ${props => props.theme.borderRadius.xl};
   padding: ${props => props.theme.spacing.xl};
   backdrop-filter: blur(10px);
+  max-width: 1000px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: ${props => props.theme.spacing['2xl']};
+  align-items: flex-start;
+  
+  @media (max-width: ${props => props.theme.breakpoints.lg}) {
+    grid-template-columns: 1fr;
+    gap: ${props => props.theme.spacing.lg};
+    text-align: center;
+    align-items: center;
+  }
 `;
 
 const CardHeader = styled.div`
   display: flex;
-  align-items: center;
-  margin-bottom: ${props => props.theme.spacing.lg};
+  align-items: flex-start;
+  flex-direction: column;
+  text-align: center;
+  min-width: 280px;
+  
+  @media (min-width: ${props => props.theme.breakpoints.lg}) {
+    flex-direction: row;
+    text-align: left;
+    align-items: flex-start;
+  }
 `;
 
 const IconWrapper = styled.div`
@@ -72,7 +87,12 @@ const IconWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: ${props => props.theme.spacing.lg};
+  margin-bottom: ${props => props.theme.spacing.sm};
+  
+  @media (min-width: ${props => props.theme.breakpoints.lg}) {
+    margin-bottom: 0;
+    margin-right: ${props => props.theme.spacing.lg};
+  }
 
   svg {
     width: 30px;
@@ -85,20 +105,48 @@ const CardTitle = styled.h3`
   font-size: ${props => props.theme.fontSizes['2xl']};
   font-weight: ${props => props.theme.fontWeights.bold};
   margin: 0;
+  color: ${props => props.theme.colors.white};
 `;
 
 const StatHighlight = styled.div`
   font-size: ${props => props.theme.fontSizes['4xl']};
   font-weight: ${props => props.theme.fontWeights.extrabold};
   color: ${props => props.theme.colors.secondary};
-  margin: ${props => props.theme.spacing.md} 0;
+  margin-top: ${props => props.theme.spacing.sm};
+  
+  @media (max-width: ${props => props.theme.breakpoints.lg}) {
+    text-align: center;
+    margin: ${props => props.theme.spacing.md} 0;
+  }
+  
+  @media (min-width: ${props => props.theme.breakpoints.lg}) {
+    text-align: left;
+  }
+`;
+
+const CardContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  
+  @media (max-width: ${props => props.theme.breakpoints.lg}) {
+    align-items: center;
+    text-align: center;
+  }
+  
+  @media (min-width: ${props => props.theme.breakpoints.lg}) {
+    text-align: left;
+  }
 `;
 
 const CardDescription = styled.p`
   font-size: ${props => props.theme.fontSizes.lg};
-  color: ${props => props.theme.colors.gray[200]};
+  color: ${props => props.theme.colors.gray[100]};
   line-height: 1.6;
   margin-bottom: ${props => props.theme.spacing.lg};
+  
+  @media (min-width: ${props => props.theme.breakpoints.lg}) {
+    display: none;
+  }
 `;
 
 const FeatureList = styled.ul`
@@ -111,7 +159,7 @@ const FeatureItem = styled.li`
   display: flex;
   align-items: center;
   margin-bottom: ${props => props.theme.spacing.sm};
-  color: ${props => props.theme.colors.gray[300]};
+  color: ${props => props.theme.colors.gray[100]};
 
   &::before {
     content: '✓';
@@ -154,8 +202,8 @@ const CompetitiveAdvantage: React.FC = () => {
 
         <AdvantageGrid>
           <AdvantageCard
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
@@ -165,45 +213,21 @@ const CompetitiveAdvantage: React.FC = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2-2V7a2 2 0 012-2h2a2 2 0 002 2v2a2 2 0 002 2h2a2 2 0 012-2V7a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 00-2 2h-2a2 2 0 00-2 2v6a2 2 0 01-2 2H11a2 2 0 01-2-2z" />
                 </svg>
               </IconWrapper>
-              <CardTitle>Market Opportunity</CardTitle>
+              <CardContent>
+                <CardTitle>Market Opportunity</CardTitle>
+                <StatHighlight>80.7%</StatHighlight>
+                <CardDescription>
+                  of competitors haven't adopted digital drive-thru boards, creating a massive 
+                  first-mover advantage for early adopters.
+                </CardDescription>
+              </CardContent>
             </CardHeader>
-            <StatHighlight>80.7%</StatHighlight>
-            <CardDescription>
-              of competitors haven't adopted digital drive-thru boards, creating a massive 
-              first-mover advantage for early adopters.
-            </CardDescription>
+            
             <FeatureList>
               <FeatureItem>Capture market share before competitors catch up</FeatureItem>
               <FeatureItem>Differentiate with modern customer experience</FeatureItem>
               <FeatureItem>Build customer loyalty through innovation</FeatureItem>
               <FeatureItem>Establish technology leadership in your market</FeatureItem>
-            </FeatureList>
-          </AdvantageCard>
-
-          <AdvantageCard
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            <CardHeader>
-              <IconWrapper>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </IconWrapper>
-              <CardTitle>COVID-19 Response</CardTitle>
-            </CardHeader>
-            <StatHighlight>100%</StatHighlight>
-            <CardDescription>
-              contactless ordering and payment capabilities that modern consumers expect, 
-              with remote content management for safety.
-            </CardDescription>
-            <FeatureList>
-              <FeatureItem>Pump-side ordering eliminates store entry</FeatureItem>
-              <FeatureItem>Touchless payment integration</FeatureItem>
-              <FeatureItem>Remote menu updates without staff exposure</FeatureItem>
-              <FeatureItem>Health & safety messaging capabilities</FeatureItem>
             </FeatureList>
           </AdvantageCard>
         </AdvantageGrid>

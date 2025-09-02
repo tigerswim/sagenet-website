@@ -26,9 +26,8 @@ interface BusinessInputs {
   operatingHoursDaily: number;
   monthlyDowntime: number;
   annualPrintingCosts: number;
-  menuUpdateHours: number;
+  staffHourlyRate: number;
   currentDigitalSolution: string;
-  menuComplexity: number;
   promotionalFrequency: string;
   seasonalChanges: boolean;
   posIntegration: boolean;
@@ -203,7 +202,7 @@ export const generateROIReport = (data: ReportData): void => {
     ['Operating Hours/Day', `${data.inputs.operatingHoursDaily} hours`],
     ['Monthly Network Downtime', `${data.inputs.monthlyDowntime} hours`],
     ['Annual Printing Costs/Location', formatCurrency(data.inputs.annualPrintingCosts)],
-    ['Menu Items', data.inputs.menuComplexity.toString()],
+    ['Average Staff Hourly Rate', `$${data.inputs.staffHourlyRate}/hr`],
     ['Promotional Frequency', data.inputs.promotionalFrequency],
     ['Current Digital Solution', data.inputs.currentDigitalSolution],
     ['POS Integration Needed', data.inputs.posIntegration ? 'Yes' : 'No']

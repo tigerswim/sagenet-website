@@ -4,26 +4,26 @@ import { motion } from 'framer-motion';
 import Button from '../common/Button';
 
 const ShowcaseSection = styled.section`
-  padding: ${props => props.theme.spacing['4xl']} 0;
+  padding: ${props => props.theme.spacing.lg} 0;
   background: ${props => props.theme.colors.gray[50]};
 `;
 
 const SectionHeader = styled.div`
-  text-align: center;
-  margin-bottom: ${props => props.theme.spacing['3xl']};
+  text-align: left;
+  margin-bottom: ${props => props.theme.spacing.lg};
+  max-width: 800px;
 
   h2 {
-    font-size: ${props => props.theme.fontSizes['3xl']};
+    font-size: ${props => props.theme.fontSizes['4xl']};
     font-weight: ${props => props.theme.fontWeights.bold};
     color: ${props => props.theme.colors.gray[900]};
-    margin-bottom: ${props => props.theme.spacing.md};
+    margin-bottom: ${props => props.theme.spacing.lg};
+    line-height: 1.2;
   }
 
   p {
-    font-size: ${props => props.theme.fontSizes.lg};
+    font-size: ${props => props.theme.fontSizes.xl};
     color: ${props => props.theme.colors.gray[600]};
-    max-width: 600px;
-    margin: 0 auto;
     line-height: 1.6;
   }
 `;
@@ -31,8 +31,8 @@ const SectionHeader = styled.div`
 const ShowcaseGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  gap: ${props => props.theme.spacing['2xl']};
-  margin-bottom: ${props => props.theme.spacing['3xl']};
+  gap: ${props => props.theme.spacing.lg};
+  margin-bottom: ${props => props.theme.spacing.xl};
 
   @media (min-width: ${props => props.theme.breakpoints.md}) {
     grid-template-columns: repeat(2, 1fr);
@@ -171,7 +171,7 @@ const SolutionsShowcase: React.FC = () => {
   const solutions = [
     {
       title: 'Drive-Thru Excellence',
-      category: 'QSR',
+      category: 'Fast Food',
       description: 'Dynamic menu boards that increase order values and reduce wait times in high-traffic drive-thru environments.',
       image: '/images/signage/SageNet-blog-drive-thru-technology.jpg',
       imageAlt: 'Digital menu boards in restaurant drive-thru showing dynamic food offerings',
@@ -183,7 +183,7 @@ const SolutionsShowcase: React.FC = () => {
     },
     {
       title: 'In-Store Experience',
-      category: 'Restaurant',
+      category: 'QSR',
       description: 'Eye-catching promotional displays that drive impulse purchases and enhance brand messaging throughout the dining experience.',
       image: '/images/signage/SageNet-blog-Restaurant-Signage.jpg',
       imageAlt: 'Restaurant digital signage displaying promotional combo menu',
@@ -194,8 +194,8 @@ const SolutionsShowcase: React.FC = () => {
       ]
     },
     {
-      title: 'Retail Operations',
-      category: 'C-Store',
+      title: 'In-Store Operations',
+      category: 'Retail',
       description: 'Flexible signage solutions that promote seasonal items, sales, and brand partnerships while reducing operational costs.',
       image: '/images/signage/SageNet-blog-Signage-Small-Stores.jpg',
       imageAlt: 'Digital signage in retail store showing promotional sale content',
