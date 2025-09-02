@@ -1,46 +1,68 @@
-# Getting Started with Create React App
+# SageNet Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, responsive website for SageNet's digital signage and managed network services, built with React, TypeScript, and styled-components.
+
+## Features
+
+- **Responsive Design**: Mobile-first approach with breakpoint-based layouts
+- **Interactive ROI Calculator**: Advanced calculator with service differentiation (Digital/Network/Combined) and PDF report generation
+- **Image Showcase**: Real implementation photos across different retail environments
+- **Professional Branding**: Updated with 2023 SageNet logo and consistent visual identity
+- **Performance Optimized**: Fast loading with optimized images and efficient animations
+
+## Tech Stack
+
+- **React 18** with TypeScript
+- **styled-components** for CSS-in-JS styling
+- **Framer Motion** for animations and transitions
+- **React Router v6** for navigation
+- **jsPDF** for ROI report generation
+- **Open Sans** typography via Google Fonts
+
+## Project Structure
+
+```
+src/
+├── components/
+│   ├── common/          # Reusable UI components (Button, Header, Footer)
+│   └── sections/        # Page sections (Hero, ROI Calculator, etc.)
+├── pages/              # Route-level components (Home, Marketing, IT, Contact)
+├── styles/             # Theme configuration and global styles
+├── utils/              # Utilities (PDF generation, calculations)
+└── App.tsx            # Main app component with routing
+```
+
+## Key Components
+
+### Image Assets
+- **Logo**: `/public/images/logo/sagenet-logo-2023.webp`
+- **Signage Photos**: Real implementation photos in `/public/images/signage/`
+- **NOC Photos**: Network Operations Center images in `/public/images/NOC/`
+
+### Core Features
+- **Hero Section**: Showcases solutions with real implementation photos
+- **ROI Calculator**: Comprehensive business calculator with industry-specific logic
+- **Solutions Showcase**: Visual gallery of different retail environments
+- **NOC Infrastructure**: Professional operations center presentation
 
 ## Available Scripts
 
-In the project directory, you can run:
-
 ### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Runs the app in development mode at [http://localhost:3000](http://localhost:3000)
 
 ### `npm run build`
+Builds the app for production to the `build` folder
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### `npm test`
+Launches the test runner in interactive watch mode
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Development Notes
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Images are served from `/public/images/` and referenced with absolute paths
+- Theme configuration in `src/styles/theme.ts` provides consistent design tokens
+- ROI calculations use industry-validated assumptions from digital signage research
+- All navigation routes are properly configured in `App.tsx`
 
-### `npm run eject`
+## Deployment
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+The site is configured for deployment on Netlify with proper routing support for single-page applications.

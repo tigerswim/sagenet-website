@@ -84,6 +84,97 @@ const IconWrapper = styled.div`
   }
 `;
 
+const NOCSection = styled.section`
+  background: ${props => props.theme.colors.gray[50]};
+  padding: ${props => props.theme.spacing['4xl']} 0;
+`;
+
+const NOCGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: ${props => props.theme.spacing['3xl']};
+  align-items: center;
+
+  @media (min-width: ${props => props.theme.breakpoints.lg}) {
+    grid-template-columns: 1fr 1fr;
+  }
+`;
+
+const NOCContent = styled(motion.div)`
+  h2 {
+    font-size: ${props => props.theme.fontSizes['3xl']};
+    font-weight: ${props => props.theme.fontWeights.bold};
+    color: ${props => props.theme.colors.gray[900]};
+    margin-bottom: ${props => props.theme.spacing.lg};
+  }
+
+  p {
+    font-size: ${props => props.theme.fontSizes.lg};
+    color: ${props => props.theme.colors.gray[600]};
+    line-height: 1.7;
+    margin-bottom: ${props => props.theme.spacing.lg};
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: ${props => props.theme.spacing.xl};
+
+    li {
+      display: flex;
+      align-items: center;
+      margin-bottom: ${props => props.theme.spacing.sm};
+      font-size: ${props => props.theme.fontSizes.md};
+      color: ${props => props.theme.colors.gray[700]};
+
+      &::before {
+        content: '✓';
+        color: ${props => props.theme.colors.secondary};
+        font-weight: bold;
+        margin-right: ${props => props.theme.spacing.sm};
+        font-size: ${props => props.theme.fontSizes.lg};
+      }
+    }
+  }
+`;
+
+const NOCImageWrapper = styled(motion.div)`
+  position: relative;
+  border-radius: ${props => props.theme.borderRadius['2xl']};
+  overflow: hidden;
+  box-shadow: ${props => props.theme.shadows.xl};
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .secondary-image {
+    position: absolute;
+    bottom: ${props => props.theme.spacing.lg};
+    right: ${props => props.theme.spacing.lg};
+    width: 200px;
+    height: 120px;
+    border-radius: ${props => props.theme.borderRadius.xl};
+    border: 3px solid ${props => props.theme.colors.white};
+    box-shadow: ${props => props.theme.shadows.lg};
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @media (max-width: ${props => props.theme.breakpoints.md}) {
+      width: 150px;
+      height: 90px;
+      bottom: ${props => props.theme.spacing.md};
+      right: ${props => props.theme.spacing.md};
+    }
+  }
+`;
+
 const IT: React.FC = () => {
   const features = [
     {
@@ -166,6 +257,55 @@ const IT: React.FC = () => {
           </FeatureGrid>
         </div>
       </ContentSection>
+
+      <NOCSection>
+        <div className="container">
+          <NOCGrid>
+            <NOCContent
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <h2>Enterprise Operations Center</h2>
+              <p>
+                Our state-of-the-art Network Operations Center in Tulsa provides 24/7/365 monitoring 
+                and support for your critical infrastructure. With dedicated engineers and advanced 
+                monitoring systems, we ensure your business stays connected.
+              </p>
+              <ul>
+                <li>24/7 proactive network monitoring</li>
+                <li>Dedicated engineering support team</li>
+                <li>Real-time performance analytics</li>
+                <li>Automated failover systems</li>
+                <li>Incident response in under 5 minutes</li>
+                <li>Direct escalation to senior engineers</li>
+              </ul>
+              <Button variant="primary" size="lg">
+                Schedule NOC Tour
+              </Button>
+            </NOCContent>
+
+            <NOCImageWrapper
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <img 
+                src="/images/NOC/Tulsa-NOC-med-web.jpg" 
+                alt="SageNet Network Operations Center showing engineers monitoring network infrastructure with multiple screens displaying real-time data"
+              />
+              <div className="secondary-image">
+                <img 
+                  src="/images/NOC/NOC-with-people-talking.jpeg" 
+                  alt="SageNet NOC team collaborating on network solutions and infrastructure planning"
+                />
+              </div>
+            </NOCImageWrapper>
+          </NOCGrid>
+        </div>
+      </NOCSection>
     </PageWrapper>
   );
 };

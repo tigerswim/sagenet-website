@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 const StatsSectionWrapper = styled.section`
   background: ${props => props.theme.colors.gray[50]};
-  padding: ${props => props.theme.spacing['4xl']} 0;
+  padding: ${props => props.theme.spacing.xl} 0;
 `;
 
 const Container = styled.div`
@@ -16,7 +16,7 @@ const Container = styled.div`
 const StatsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: ${props => props.theme.spacing['2xl']};
+  gap: ${props => props.theme.spacing.lg};
 
   @media (max-width: ${props => props.theme.breakpoints.lg}) {
     grid-template-columns: repeat(2, 1fr);
@@ -29,7 +29,7 @@ const StatsGrid = styled.div`
 
 const StatCard = styled(motion.div)`
   text-align: center;
-  padding: ${props => props.theme.spacing.xl};
+  padding: ${props => props.theme.spacing.lg};
   background: ${props => props.theme.colors.white};
   border-radius: ${props => props.theme.borderRadius.xl};
   box-shadow: ${props => props.theme.shadows.sm};

@@ -30,8 +30,8 @@ export const theme = {
     }
   },
   fonts: {
-    primary: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif",
-    heading: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif"
+    primary: "'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+    heading: "'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
   },
   fontSizes: {
     xs: '0.75rem',
