@@ -6,7 +6,7 @@ import Button from '../common/Button';
 const Section = styled.section`
   background: linear-gradient(135deg, ${props => props.theme.colors.navy[900]} 0%, ${props => props.theme.colors.navy[800]} 100%);
   color: ${props => props.theme.colors.white};
-  padding: ${props => props.theme.spacing.xl} 0;
+  padding: ${props => props.theme.spacing.md} 0;
   position: relative;
   overflow: hidden;
 `;
@@ -21,7 +21,7 @@ const Container = styled.div`
 
 const SectionHeader = styled(motion.div)`
   text-align: center;
-  margin-bottom: ${props => props.theme.spacing.xl};
+  margin-bottom: ${props => props.theme.spacing.md};
 `;
 
 const Headline = styled.h2`

@@ -4,13 +4,13 @@ import { motion } from 'framer-motion';
 import Button from '../common/Button';
 
 const ShowcaseSection = styled.section`
-  padding: ${props => props.theme.spacing['4xl']} 0;
+  padding: ${props => props.theme.spacing.lg} 0;
   background: ${props => props.theme.colors.gray[50]};
 `;
 
 const SectionHeader = styled.div`
   text-align: center;
-  margin-bottom: ${props => props.theme.spacing['3xl']};
+  margin-bottom: ${props => props.theme.spacing.lg};
 
   h2 {
     font-size: ${props => props.theme.fontSizes['3xl']};
@@ -31,8 +31,8 @@ const SectionHeader = styled.div`
 const ShowcaseGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  gap: ${props => props.theme.spacing['2xl']};
-  margin-bottom: ${props => props.theme.spacing['3xl']};
+  gap: ${props => props.theme.spacing.lg};
+  margin-bottom: ${props => props.theme.spacing.xl};
 
   @media (min-width: ${props => props.theme.breakpoints.md}) {
     grid-template-columns: repeat(2, 1fr);

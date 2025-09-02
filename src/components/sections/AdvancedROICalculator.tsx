@@ -6,18 +6,18 @@ import { generateROIReport } from '../../utils/pdfGenerator';
 
 const CalculatorSection = styled.section`
   background: ${props => props.theme.colors.navy[50]};
-  padding: ${props => props.theme.spacing.xl} 0;
+  padding: ${props => props.theme.spacing.md} 0;
 `;
 
 const Container = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 ${props => props.theme.spacing.lg};
+  padding: 0 ${props => props.theme.spacing.md};
 `;
 
 const SectionHeader = styled(motion.div)`
   text-align: center;
-  margin-bottom: ${props => props.theme.spacing.xl};
+  margin-bottom: ${props => props.theme.spacing.md};
   
   h2 {
     font-size: ${props => props.theme.fontSizes['4xl']};
@@ -75,18 +75,18 @@ const ToggleButton = styled.button<{ active: boolean }>`
 `;
 
 const CalculatorContent = styled.div`
-  padding: ${props => props.theme.spacing.xl};
+  padding: ${props => props.theme.spacing.lg};
 `;
 
 const InputSection = styled(motion.div)`
-  margin-bottom: ${props => props.theme.spacing.xl};
+  margin-bottom: ${props => props.theme.spacing.md};
 `;
 
 const SectionTitle = styled.h3`
   font-size: ${props => props.theme.fontSizes['2xl']};
   font-weight: ${props => props.theme.fontWeights.bold};
   color: ${props => props.theme.colors.gray[900]};
-  margin-bottom: ${props => props.theme.spacing.lg};
+  margin-bottom: ${props => props.theme.spacing.sm};
   
   &::after {
     content: '';
@@ -101,7 +101,7 @@ const SectionTitle = styled.h3`
 const InputGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: ${props => props.theme.spacing.lg};
+  gap: ${props => props.theme.spacing.md};
   
   @media (max-width: ${props => props.theme.breakpoints.md}) {
     grid-template-columns: 1fr;
@@ -109,7 +109,7 @@ const InputGrid = styled.div`
 `;
 
 const InputGroup = styled.div`
-  margin-bottom: ${props => props.theme.spacing.lg};
+  margin-bottom: ${props => props.theme.spacing.sm};
 `;
 
 const Label = styled.label`
