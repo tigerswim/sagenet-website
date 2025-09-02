@@ -29,7 +29,7 @@ const StatsGrid = styled.div`
 
 const StatCard = styled(motion.div)`
   text-align: center;
-  padding: ${props => props.theme.spacing.lg};
+  padding: ${props => props.theme.spacing.md};
   background: ${props => props.theme.colors.white};
   border-radius: ${props => props.theme.borderRadius.xl};
   box-shadow: ${props => props.theme.shadows.sm};

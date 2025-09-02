@@ -86,8 +86,8 @@ const Footer: React.FC = () => {
           <FooterSection>
             <h3>Solutions</h3>
             <FooterLinks>
-              <FooterLink to="/marketing">For Marketing</FooterLink>
-              <FooterLink to="/it">For IT</FooterLink>
+              <FooterLink to="/marketing">Digital Displays</FooterLink>
+              <FooterLink to="/it">Managed Networks</FooterLink>
               <FooterLink to="/industries/qsr">Quick Service</FooterLink>
               <FooterLink to="/industries/retail">Retail</FooterLink>
               <FooterLink to="/industries/convenience">Convenience</FooterLink>
