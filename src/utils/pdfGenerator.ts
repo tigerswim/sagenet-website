@@ -49,11 +49,6 @@ interface ReportData {
 export const generateROIReport = (data: ReportData): void => {
   const doc = new jsPDF();
   
-  // Colors
-  const primaryBlue = '#1e3a8a';
-  const secondaryOrange = '#ea580c';
-  const lightGray = '#f3f4f6';
-  
   let yPosition = 20;
   
   // Header

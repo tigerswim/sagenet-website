@@ -22,12 +22,6 @@ const ContentWrapper = styled.div`
   padding: 0 1rem;
 `;
 
-const ContentWrapperLarge = styled.div`
-  max-width: 1536px;
-  margin: 0 auto;
-  padding: 0 1rem;
-`;
-
 const HeaderContainer = styled(motion.div)`
   text-align: left;
   margin-bottom: ${props => props.theme.spacing.xl};

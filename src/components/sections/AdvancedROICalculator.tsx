@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import Button from '../common/Button';
@@ -384,7 +384,7 @@ const AdvancedROICalculator: React.FC = () => {
   const [results, setResults] = useState<ROIResults | null>(null);
 
   // Industry-specific multipliers with sources
-  const industryData = {
+  const industryData = useMemo(() => ({
     qsr: {
       orderValueMultiplier: 1.025, // 2.5% industry average (SageNet white paper)
       trafficMultiplier: 1.091, // 9.1% from digital menu studies (SageNet white paper)
@@ -439,9 +439,9 @@ const AdvancedROICalculator: React.FC = () => {
       salesLiftPotential: 1.20,
       operationalSavings: 18000
     }
-  };
+  }), []);
 
-  const calculateROI = (): ROIResults => {
+  const calculateROI = useCallback((): ROIResults => {
     const industry = industryData[inputs.industryType];
     
     // Base calculations
@@ -510,11 +510,11 @@ const AdvancedROICalculator: React.FC = () => {
       roiPercentage: Math.round(((netAnnualBenefit * 3 - initialInvestment) / initialInvestment) * 100),
       paybackMonths: Math.ceil(initialInvestment / (netAnnualBenefit / 12))
     };
-  };
+  }, [inputs, serviceType, industryData]);
 
   useEffect(() => {
     setResults(calculateROI());
-  }, [inputs, serviceType]);
+  }, [inputs, serviceType, calculateROI]);
 
   const formatCurrency = (value: number) => {
     return new Intl.NumberFormat('en-US', {

@@ -16,14 +16,6 @@ const LogosSection = styled.section`
   padding: ${props => props.theme.spacing.md} 0 ${props => props.theme.spacing.xl} 0;
 `;
 
-const SectionTitle = styled.h2`
-  text-align: center;
-  color: ${props => props.theme.colors.gray[600]};
-  font-size: ${props => props.theme.fontSizes.lg};
-  font-weight: ${props => props.theme.fontWeights.medium};
-  margin-bottom: ${props => props.theme.spacing['2xl']};
-`;
-
 const LogosContainer = styled.div`
   overflow: hidden;
   white-space: nowrap;
