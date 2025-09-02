@@ -112,8 +112,8 @@ const Header: React.FC = () => {
           </Logo>
           
           <NavLinks>
-            <NavLink to="/marketing">For Marketing</NavLink>
-            <NavLink to="/it">For IT</NavLink>
+            <NavLink to="/marketing">Digital Displays</NavLink>
+            <NavLink to="/it">Managed Networks</NavLink>
             <NavLink to="/about">About</NavLink>
             <NavLink to="/resources">Resources</NavLink>
             <Button variant="primary" size="sm" as={Link} to="/contact">

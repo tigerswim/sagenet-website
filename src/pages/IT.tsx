@@ -18,6 +18,7 @@ const PageTitle = styled(motion.h1)`
   font-size: ${props => props.theme.fontSizes['5xl']};
   font-weight: ${props => props.theme.fontWeights.extrabold};
   margin-bottom: ${props => props.theme.spacing.lg};
+  color: ${props => props.theme.colors.white};
 
   @media (max-width: ${props => props.theme.breakpoints.md}) {
     font-size: ${props => props.theme.fontSizes['4xl']};
@@ -27,6 +28,7 @@ const PageTitle = styled(motion.h1)`
 const PageSubtitle = styled(motion.p)`
   font-size: ${props => props.theme.fontSizes.xl};
   margin-bottom: ${props => props.theme.spacing['2xl']};
+  color: ${props => props.theme.colors.white};
   opacity: 0.9;
 `;
 
@@ -59,10 +61,11 @@ const FeatureCard = styled(motion.div)`
     font-size: ${props => props.theme.fontSizes.xl};
     color: ${props => props.theme.colors.gray[900]};
     margin-bottom: ${props => props.theme.spacing.md};
+    font-weight: ${props => props.theme.fontWeights.bold};
   }
 
   p {
-    color: ${props => props.theme.colors.gray[600]};
+    color: ${props => props.theme.colors.gray[700]};
     line-height: 1.6;
   }
 `;
@@ -110,7 +113,7 @@ const NOCContent = styled(motion.div)`
 
   p {
     font-size: ${props => props.theme.fontSizes.lg};
-    color: ${props => props.theme.colors.gray[600]};
+    color: ${props => props.theme.colors.gray[700]};
     line-height: 1.7;
     margin-bottom: ${props => props.theme.spacing.lg};
   }
@@ -125,7 +128,7 @@ const NOCContent = styled(motion.div)`
       align-items: center;
       margin-bottom: ${props => props.theme.spacing.sm};
       font-size: ${props => props.theme.fontSizes.md};
-      color: ${props => props.theme.colors.gray[700]};
+      color: ${props => props.theme.colors.gray[800]};
 
       &::before {
         content: '✓';

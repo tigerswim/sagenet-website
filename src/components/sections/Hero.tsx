@@ -39,7 +39,7 @@ const ContentWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   gap: ${props => props.theme.spacing.xl};
-  align-items: center;
+  align-items: start;
 
   @media (min-width: ${props => props.theme.breakpoints.lg}) {
     grid-template-columns: 1fr 400px;
@@ -127,37 +127,17 @@ const ImageShowcase = styled(motion.div)`
   border-radius: ${props => props.theme.borderRadius['2xl']};
   overflow: hidden;
   box-shadow: ${props => props.theme.shadows.xl};
+  height: 400px;
 `;
 
 const ShowcaseImage = styled.img`
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
   display: block;
 `;
 
-const ImageOverlay = styled.div`
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.3));
-  padding: ${props => props.theme.spacing.lg};
-  color: ${props => props.theme.colors.white};
-  
-  h3 {
-    font-size: ${props => props.theme.fontSizes.lg};
-    font-weight: ${props => props.theme.fontWeights.bold};
-    color: ${props => props.theme.colors.white};
-    margin-bottom: ${props => props.theme.spacing.xs};
-  }
-  
-  p {
-    font-size: ${props => props.theme.fontSizes.sm};
-    color: ${props => props.theme.colors.white};
-    opacity: 0.9;
-    margin: 0;
-  }
-`;
 
 const Hero: React.FC = () => {
   return (
@@ -171,8 +151,8 @@ const Hero: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              The Only Infrastructure Partner
-              <AccentText>Built for Multi-Site Retail</AccentText>
+              Connect Every Location
+              <AccentText>Engage Every Customer</AccentText>
             </Headline>
             
             <Subtitle
@@ -180,8 +160,8 @@ const Hero: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Scale both your connectivity AND digital experiences with enterprise-grade networks that 
-              power revenue-driving menu displays, in-store signage, and customer engagement solutions.
+              We help companies build turn reliable networks and compelling digital 
+              experiences into measurable business results across all their locations.
             </Subtitle>
 
             <CTASection
@@ -236,12 +216,10 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.8 }}
           >
             <ShowcaseImage 
-              src="/images/signage/kg-signage2.jpg" 
+              src="/images/signage/instore-signage-example.svg" 
               alt="Digital menu boards in convenience store showing fresh market options and pricing"
             />
-            <ImageOverlay>
-              <h3>Digital Menu Boards in Action</h3>
-            </ImageOverlay>
+
           </ImageShowcase>
         </ContentWrapper>
       </div>
