@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import Button from '../common/Button';
 
 const ShowcaseSection = styled.section`
@@ -168,6 +169,7 @@ const CTASection = styled.div`
 `;
 
 const SolutionsShowcase: React.FC = () => {
+  const navigate = useNavigate();
   const solutions = [
     {
       title: 'Drive-Thru Excellence',
@@ -274,7 +276,11 @@ const SolutionsShowcase: React.FC = () => {
               integrated approach to connectivity and digital experiences.
             </p>
             <div className="button-group">
-              <Button variant="primary" size="lg">
+              <Button 
+                variant="primary" 
+                size="lg"
+                onClick={() => navigate('/contact')}
+              >
                 Schedule a Demo
               </Button>
               <Button 

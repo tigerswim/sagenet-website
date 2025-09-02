@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import Button from '../common/Button';
 
 const Section = styled.section`
@@ -167,6 +168,7 @@ const CTASection = styled(motion.div)`
 `;
 
 const IntegratedSolutions: React.FC = () => {
+  const navigate = useNavigate();
   const solutions = [
     {
       title: 'Digital Menu Optimization',
@@ -274,7 +276,11 @@ const IntegratedSolutions: React.FC = () => {
           <Button size="lg" variant="primary" style={{ marginRight: '1rem' }}>
             Calculate Your ROI
           </Button>
-          <Button size="lg" variant="outline">
+          <Button 
+            size="lg" 
+            variant="outline"
+            onClick={() => navigate('/contact')}
+          >
             Schedule Demo
           </Button>
         </CTASection>

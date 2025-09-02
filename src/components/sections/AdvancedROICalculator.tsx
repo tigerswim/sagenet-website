@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import Button from '../common/Button';
 import { generateROIReport } from '../../utils/pdfGenerator';
+import { trackROICalculatorEvent, trackDemoRequest, trackFileDownload } from '../../utils/analytics';
 
 const CalculatorSection = styled.section`
   background: ${props => props.theme.colors.navy[50]};
@@ -466,6 +468,7 @@ interface ROIResults {
 }
 
 const AdvancedROICalculator: React.FC = () => {
+  const navigate = useNavigate();
   const [serviceType, setServiceType] = useState<ServiceType>('combined');
   const [inputs, setInputs] = useState<BusinessInputs>({
     locations: 25,
@@ -646,6 +649,8 @@ const AdvancedROICalculator: React.FC = () => {
     };
     
     generateROIReport(reportData);
+    trackROICalculatorEvent('pdf_download', `${inputs.locations} locations, ${inputs.industryType}`);
+    trackFileDownload('ROI_Report', 'PDF');
   };
 
   return (
@@ -972,7 +977,14 @@ const AdvancedROICalculator: React.FC = () => {
                 <Button size="lg" variant="primary" onClick={generatePDFReport}>
                   Get Detailed ROI Report
                 </Button>
-                <Button size="lg" variant="outline">
+                <Button 
+                  size="lg" 
+                  variant="outline"
+                  onClick={() => {
+                    trackDemoRequest('consultation', 'roi_calculator');
+                    navigate('/contact');
+                  }}
+                >
                   Schedule Consultation
                 </Button>
               </CTASection>

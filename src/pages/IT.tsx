@@ -1,45 +1,61 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import Button from '../components/common/Button';
+import { trackDemoRequest } from '../utils/analytics';
 
 const PageWrapper = styled.div`
   min-height: 80vh;
 `;
 
 const HeroSection = styled.section`
-  background: linear-gradient(135deg, ${props => props.theme.colors.primary} 0%, ${props => props.theme.colors.navy[800]} 100%);
+  background-image: linear-gradient(135deg, rgba(30, 64, 175, 0.8) 0%, rgba(15, 23, 42, 0.8) 100%), 
+                    url('/images/NOC/Tulsa-NOC-med-web.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: ${props => props.theme.colors.white};
-  padding: ${props => props.theme.spacing['4xl']} 0;
+  padding: ${props => props.theme.spacing.lg} 0;
   text-align: center;
+  position: relative;
+  
+  .container {
+    position: relative;
+    z-index: 2;
+  }
 `;
 
 const PageTitle = styled(motion.h1)`
-  font-size: ${props => props.theme.fontSizes['5xl']};
+  font-size: ${props => props.theme.fontSizes['4xl']};
   font-weight: ${props => props.theme.fontWeights.extrabold};
-  margin-bottom: ${props => props.theme.spacing.lg};
+  margin-bottom: ${props => props.theme.spacing.md};
   color: ${props => props.theme.colors.white};
 
   @media (max-width: ${props => props.theme.breakpoints.md}) {
-    font-size: ${props => props.theme.fontSizes['4xl']};
+    font-size: ${props => props.theme.fontSizes['3xl']};
   }
 `;
 
 const PageSubtitle = styled(motion.p)`
-  font-size: ${props => props.theme.fontSizes.xl};
-  margin-bottom: ${props => props.theme.spacing['2xl']};
+  font-size: ${props => props.theme.fontSizes.lg};
+  margin-bottom: ${props => props.theme.spacing.lg};
   color: ${props => props.theme.colors.white};
   opacity: 0.9;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 const ContentSection = styled.section`
-  padding: ${props => props.theme.spacing['4xl']} 0;
+  background: ${props => props.theme.colors.gray[50]};
+  padding: ${props => props.theme.spacing.lg} 0;
 `;
 
 const FeatureGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  gap: ${props => props.theme.spacing['2xl']};
+  gap: ${props => props.theme.spacing.md};
 
   @media (min-width: ${props => props.theme.breakpoints.md}) {
     grid-template-columns: repeat(2, 1fr);
@@ -52,50 +68,51 @@ const FeatureGrid = styled.div`
 
 const FeatureCard = styled(motion.div)`
   background: ${props => props.theme.colors.white};
-  padding: ${props => props.theme.spacing['2xl']};
+  padding: ${props => props.theme.spacing.md};
   border-radius: ${props => props.theme.borderRadius['2xl']};
   box-shadow: ${props => props.theme.shadows.md};
   text-align: center;
 
   h3 {
-    font-size: ${props => props.theme.fontSizes.xl};
+    font-size: ${props => props.theme.fontSizes.lg};
     color: ${props => props.theme.colors.gray[900]};
-    margin-bottom: ${props => props.theme.spacing.md};
+    margin-bottom: ${props => props.theme.spacing.sm};
     font-weight: ${props => props.theme.fontWeights.bold};
   }
 
   p {
     color: ${props => props.theme.colors.gray[700]};
-    line-height: 1.6;
+    line-height: 1.5;
+    font-size: ${props => props.theme.fontSizes.sm};
   }
 `;
 
 const IconWrapper = styled.div`
-  width: 60px;
-  height: 60px;
+  width: 48px;
+  height: 48px;
   background: ${props => props.theme.colors.primary};
   border-radius: ${props => props.theme.borderRadius.xl};
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto ${props => props.theme.spacing.lg} auto;
+  margin: 0 auto ${props => props.theme.spacing.sm} auto;
 
   svg {
-    width: 30px;
-    height: 30px;
+    width: 24px;
+    height: 24px;
     color: ${props => props.theme.colors.white};
   }
 `;
 
 const NOCSection = styled.section`
-  background: ${props => props.theme.colors.gray[50]};
-  padding: ${props => props.theme.spacing['4xl']} 0;
+  background: ${props => props.theme.colors.white};
+  padding: ${props => props.theme.spacing.lg} 0;
 `;
 
 const NOCGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  gap: ${props => props.theme.spacing['3xl']};
+  gap: ${props => props.theme.spacing.lg};
   align-items: center;
 
   @media (min-width: ${props => props.theme.breakpoints.lg}) {
@@ -105,29 +122,29 @@ const NOCGrid = styled.div`
 
 const NOCContent = styled(motion.div)`
   h2 {
-    font-size: ${props => props.theme.fontSizes['3xl']};
+    font-size: ${props => props.theme.fontSizes['2xl']};
     font-weight: ${props => props.theme.fontWeights.bold};
     color: ${props => props.theme.colors.gray[900]};
-    margin-bottom: ${props => props.theme.spacing.lg};
+    margin-bottom: ${props => props.theme.spacing.md};
   }
 
   p {
-    font-size: ${props => props.theme.fontSizes.lg};
+    font-size: ${props => props.theme.fontSizes.md};
     color: ${props => props.theme.colors.gray[700]};
-    line-height: 1.7;
-    margin-bottom: ${props => props.theme.spacing.lg};
+    line-height: 1.6;
+    margin-bottom: ${props => props.theme.spacing.md};
   }
 
   ul {
     list-style: none;
     padding: 0;
-    margin-bottom: ${props => props.theme.spacing.xl};
+    margin-bottom: ${props => props.theme.spacing.md};
 
     li {
       display: flex;
       align-items: center;
-      margin-bottom: ${props => props.theme.spacing.sm};
-      font-size: ${props => props.theme.fontSizes.md};
+      margin-bottom: ${props => props.theme.spacing.xs};
+      font-size: ${props => props.theme.fontSizes.sm};
       color: ${props => props.theme.colors.gray[800]};
 
       &::before {
@@ -135,50 +152,29 @@ const NOCContent = styled(motion.div)`
         color: ${props => props.theme.colors.secondary};
         font-weight: bold;
         margin-right: ${props => props.theme.spacing.sm};
-        font-size: ${props => props.theme.fontSizes.lg};
+        font-size: ${props => props.theme.fontSizes.md};
       }
     }
   }
 `;
 
 const NOCImageWrapper = styled(motion.div)`
-  position: relative;
   border-radius: ${props => props.theme.borderRadius['2xl']};
   overflow: hidden;
   box-shadow: ${props => props.theme.shadows.xl};
+  height: 300px;
 
   img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
     display: block;
-  }
-
-  .secondary-image {
-    position: absolute;
-    bottom: ${props => props.theme.spacing.lg};
-    right: ${props => props.theme.spacing.lg};
-    width: 200px;
-    height: 120px;
-    border-radius: ${props => props.theme.borderRadius.xl};
-    border: 3px solid ${props => props.theme.colors.white};
-    box-shadow: ${props => props.theme.shadows.lg};
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    @media (max-width: ${props => props.theme.breakpoints.md}) {
-      width: 150px;
-      height: 90px;
-      bottom: ${props => props.theme.spacing.md};
-      right: ${props => props.theme.spacing.md};
-    }
   }
 `;
 
 const IT: React.FC = () => {
+  const navigate = useNavigate();
+  
   const features = [
     {
       title: '99.9% Network Uptime',
@@ -233,7 +229,14 @@ const IT: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <Button size="lg" variant="outline">
+            <Button 
+              size="lg" 
+              variant="outline-white"
+              onClick={() => {
+                trackDemoRequest('it_demo', 'it_page');
+                navigate('/contact');
+              }}
+            >
               Schedule IT Demo
             </Button>
           </motion.div>
@@ -284,7 +287,14 @@ const IT: React.FC = () => {
                 <li>Incident response in under 5 minutes</li>
                 <li>Direct escalation to senior engineers</li>
               </ul>
-              <Button variant="primary" size="lg">
+              <Button 
+                variant="primary" 
+                size="lg"
+                onClick={() => {
+                  trackDemoRequest('noc_tour', 'it_page');
+                  navigate('/contact');
+                }}
+              >
                 Schedule NOC Tour
               </Button>
             </NOCContent>
@@ -296,15 +306,9 @@ const IT: React.FC = () => {
               viewport={{ once: true }}
             >
               <img 
-                src="/images/NOC/Tulsa-NOC-med-web.jpg" 
-                alt="SageNet Network Operations Center showing engineers monitoring network infrastructure with multiple screens displaying real-time data"
+                src="/images/NOC/NOC-with-people-talking.jpeg" 
+                alt="SageNet NOC team collaborating on network solutions and infrastructure planning"
               />
-              <div className="secondary-image">
-                <img 
-                  src="/images/NOC/NOC-with-people-talking.jpeg" 
-                  alt="SageNet NOC team collaborating on network solutions and infrastructure planning"
-                />
-              </div>
             </NOCImageWrapper>
           </NOCGrid>
         </div>

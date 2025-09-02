@@ -5,7 +5,7 @@ import Button from '../common/Button';
 
 const ROISection = styled.section`
   background: ${props => props.theme.colors.white};
-  padding: ${props => props.theme.spacing.xl} 0;
+  padding: ${props => props.theme.spacing.lg} 0;
 `;
 
 const Container = styled.div`
@@ -17,12 +17,13 @@ const Container = styled.div`
 const ContentGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: ${props => props.theme.spacing.xl};
+  gap: ${props => props.theme.spacing.lg};
   align-items: center;
 
   @media (max-width: ${props => props.theme.breakpoints.lg}) {
     grid-template-columns: 1fr;
     text-align: center;
+    gap: ${props => props.theme.spacing.md};
   }
 `;
 
@@ -35,31 +36,31 @@ const ContentSection = styled(motion.div)`
 `;
 
 const SectionTitle = styled(motion.h2)`
-  font-size: ${props => props.theme.fontSizes['4xl']};
+  font-size: ${props => props.theme.fontSizes['3xl']};
   font-weight: ${props => props.theme.fontWeights.bold};
   color: ${props => props.theme.colors.gray[900]};
-  margin-bottom: ${props => props.theme.spacing.lg};
+  margin-bottom: ${props => props.theme.spacing.md};
   line-height: 1.2;
 `;
 
 const SectionDescription = styled(motion.p)`
-  font-size: ${props => props.theme.fontSizes.lg};
+  font-size: ${props => props.theme.fontSizes.md};
   color: ${props => props.theme.colors.gray[600]};
-  margin-bottom: ${props => props.theme.spacing.xl};
-  line-height: 1.6;
+  margin-bottom: ${props => props.theme.spacing.md};
+  line-height: 1.5;
 `;
 
 const BenefitsList = styled(motion.ul)`
   list-style: none;
   padding: 0;
-  margin: 0 0 ${props => props.theme.spacing.xl} 0;
+  margin: 0 0 ${props => props.theme.spacing.md} 0;
 `;
 
 const BenefitItem = styled(motion.li)`
   display: flex;
   align-items: center;
-  margin-bottom: ${props => props.theme.spacing.md};
-  font-size: ${props => props.theme.fontSizes.md};
+  margin-bottom: ${props => props.theme.spacing.sm};
+  font-size: ${props => props.theme.fontSizes.sm};
   color: ${props => props.theme.colors.gray[700]};
 
   @media (max-width: ${props => props.theme.breakpoints.lg}) {
@@ -103,7 +104,7 @@ const CTASection = styled(motion.div)`
 const VisualSection = styled(motion.div)`
   background: linear-gradient(135deg, ${props => props.theme.colors.primary} 0%, ${props => props.theme.colors.navy[700]} 100%);
   border-radius: ${props => props.theme.borderRadius['2xl']};
-  padding: ${props => props.theme.spacing['3xl']};
+  padding: ${props => props.theme.spacing.xl};
   color: ${props => props.theme.colors.white};
   text-align: center;
   position: relative;
@@ -111,22 +112,22 @@ const VisualSection = styled(motion.div)`
 `;
 
 const ROIHighlight = styled.div`
-  font-size: ${props => props.theme.fontSizes['6xl']};
+  font-size: ${props => props.theme.fontSizes['5xl']};
   font-weight: ${props => props.theme.fontWeights.extrabold};
-  margin-bottom: ${props => props.theme.spacing.md};
+  margin-bottom: ${props => props.theme.spacing.sm};
 `;
 
 const ROILabel = styled.div`
-  font-size: ${props => props.theme.fontSizes.xl};
+  font-size: ${props => props.theme.fontSizes.lg};
   opacity: 0.9;
-  margin-bottom: ${props => props.theme.spacing.lg};
+  margin-bottom: ${props => props.theme.spacing.md};
 `;
 
 const ROIStats = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: ${props => props.theme.spacing.lg};
-  margin-top: ${props => props.theme.spacing.xl};
+  gap: ${props => props.theme.spacing.md};
+  margin-top: ${props => props.theme.spacing.md};
 `;
 
 const ROIStat = styled.div`

@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 import Button from '../components/common/Button';
 import MenuBoardsSection from '../components/sections/MenuBoardsSection';
+import { trackDemoRequest } from '../utils/analytics';
 
 const PageWrapper = styled.div`
   min-height: 80vh;
@@ -12,36 +14,41 @@ const PageWrapper = styled.div`
 const HeroSection = styled.section`
   background: linear-gradient(135deg, ${props => props.theme.colors.secondary} 0%, #ea580c 100%);
   color: ${props => props.theme.colors.white};
-  padding: ${props => props.theme.spacing.xl} 0;
+  padding: ${props => props.theme.spacing.lg} 0;
   text-align: center;
 `;
 
 const PageTitle = styled(motion.h1)`
-  font-size: ${props => props.theme.fontSizes['5xl']};
+  font-size: ${props => props.theme.fontSizes['4xl']};
   font-weight: ${props => props.theme.fontWeights.extrabold};
-  margin-bottom: ${props => props.theme.spacing.lg};
+  margin-bottom: ${props => props.theme.spacing.md};
+  color: ${props => props.theme.colors.white} !important;
 
   @media (max-width: ${props => props.theme.breakpoints.md}) {
-    font-size: ${props => props.theme.fontSizes['4xl']};
+    font-size: ${props => props.theme.fontSizes['3xl']};
   }
 `;
 
 const PageSubtitle = styled(motion.p)`
-  font-size: ${props => props.theme.fontSizes.xl};
-  margin-bottom: ${props => props.theme.spacing.xl};
+  font-size: ${props => props.theme.fontSizes.lg};
+  margin-bottom: ${props => props.theme.spacing.md};
   opacity: 0.9;
+  color: ${props => props.theme.colors.white} !important;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 const StatsBar = styled(motion.div)`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: ${props => props.theme.spacing.lg};
-  margin-bottom: ${props => props.theme.spacing['2xl']};
+  gap: ${props => props.theme.spacing.sm};
+  margin-bottom: ${props => props.theme.spacing.lg};
   
   @media (max-width: ${props => props.theme.breakpoints.md}) {
     flex-direction: column;
-    gap: ${props => props.theme.spacing.md};
+    gap: ${props => props.theme.spacing.sm};
   }
 `;
 
@@ -49,8 +56,8 @@ const StatBadge = styled.div`
   background: rgba(255, 255, 255, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: ${props => props.theme.borderRadius.full};
-  padding: ${props => props.theme.spacing.sm} ${props => props.theme.spacing.lg};
-  font-size: ${props => props.theme.fontSizes.sm};
+  padding: ${props => props.theme.spacing.xs} ${props => props.theme.spacing.md};
+  font-size: ${props => props.theme.fontSizes.xs};
   font-weight: ${props => props.theme.fontWeights.medium};
   white-space: nowrap;
   
@@ -60,14 +67,14 @@ const StatBadge = styled.div`
 `;
 
 const ContentSection = styled.section`
-  padding: ${props => props.theme.spacing.xl} 0;
+  padding: ${props => props.theme.spacing.lg} 0;
 `;
 
 const FeatureGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  gap: ${props => props.theme.spacing.lg};
-  margin-bottom: ${props => props.theme.spacing.xl};
+  gap: ${props => props.theme.spacing.md};
+  margin-bottom: ${props => props.theme.spacing.lg};
 
   @media (min-width: ${props => props.theme.breakpoints.md}) {
     grid-template-columns: repeat(2, 1fr);
@@ -86,7 +93,7 @@ const FeatureCard = styled(motion.div)`
   text-align: left;
 
   .image-section {
-    height: 200px;
+    height: 160px;
     overflow: hidden;
     position: relative;
   }
@@ -103,22 +110,25 @@ const FeatureCard = styled(motion.div)`
   }
 
   .content-section {
-    padding: ${props => props.theme.spacing.xl};
+    padding: ${props => props.theme.spacing.md};
   }
 
   h3 {
-    font-size: ${props => props.theme.fontSizes.xl};
+    font-size: ${props => props.theme.fontSizes.lg};
     color: ${props => props.theme.colors.gray[900]};
-    margin-bottom: ${props => props.theme.spacing.sm};
+    margin-bottom: ${props => props.theme.spacing.xs};
   }
 
   p {
     color: ${props => props.theme.colors.gray[600]};
-    line-height: 1.6;
+    line-height: 1.5;
+    font-size: ${props => props.theme.fontSizes.sm};
   }
 `;
 
 const Marketing: React.FC = () => {
+  const navigate = useNavigate();
+  
   const features = [
     {
       title: 'Drive-Thru Digital Transformation',
@@ -129,7 +139,7 @@ const Marketing: React.FC = () => {
     {
       title: 'Forecourt & Pump-Side Optimization',
       description: 'Engage captive customers during 3-4 minute fueling sessions with contactless ordering that brings the store to the forecourt. Perfect for food-to-go focused convenience operations.',
-      image: '/images/signage/SageNet-blog-Restaurant-Signage.jpg',
+      image: '/images/signage/forecourt-video-screen.png',
       imageAlt: 'Restaurant digital signage displaying promotional combo menu in modern dining environment'
     },
     {
@@ -175,7 +185,14 @@ const Marketing: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <Button size="lg" variant="outline">
+            <Button 
+              size="lg" 
+              variant="outline"
+              onClick={() => {
+                trackDemoRequest('marketing_demo', 'marketing_page');
+                navigate('/contact');
+              }}
+            >
               Schedule Marketing Demo
             </Button>
           </motion.div>

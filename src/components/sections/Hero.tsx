@@ -151,8 +151,8 @@ const Hero: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              Connect Every Location
-              <AccentText>Engage Every Customer</AccentText>
+              Connect Every Location.
+              <AccentText>Engage Every Customer.</AccentText>
             </Headline>
             
             <Subtitle
@@ -216,8 +216,9 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.8 }}
           >
             <ShowcaseImage 
-              src="/images/signage/instore-signage-example.svg" 
+              src="/images/signage/instore-signage-example.jpg" 
               alt="Digital menu boards in convenience store showing fresh market options and pricing"
+              loading="eager"
             />
 
           </ImageShowcase>
