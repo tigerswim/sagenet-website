@@ -5,7 +5,7 @@ import Button from '../common/Button';
 
 const ROISection = styled.section`
   background: ${props => props.theme.colors.white};
-  padding: ${props => props.theme.spacing['4xl']} 0;
+  padding: ${props => props.theme.spacing.xl} 0;
 `;
 
 const Container = styled.div`
@@ -17,7 +17,7 @@ const Container = styled.div`
 const ContentGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: ${props => props.theme.spacing['3xl']};
+  gap: ${props => props.theme.spacing.xl};
   align-items: center;
 
   @media (max-width: ${props => props.theme.breakpoints.lg}) {
@@ -200,10 +200,28 @@ const ROIPreview: React.FC = () => {
             </BenefitsList>
 
             <CTASection variants={itemVariants}>
-              <Button size="lg" variant="primary">
+              <Button 
+                size="lg" 
+                variant="primary"
+                onClick={() => {
+                  const calculatorElement = document.getElementById('roi-calculator');
+                  if (calculatorElement) {
+                    calculatorElement.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+              >
                 Calculate Your ROI
               </Button>
-              <Button size="lg" variant="outline">
+              <Button 
+                size="lg" 
+                variant="outline"
+                onClick={() => {
+                  const caseStudiesElement = document.getElementById('case-studies');
+                  if (caseStudiesElement) {
+                    caseStudiesElement.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+              >
                 View Case Studies
               </Button>
             </CTASection>

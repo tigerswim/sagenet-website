@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import MarketingROICalculator from '../components/calculators/MarketingROI';
+
 import Button from '../components/common/Button';
+import MenuBoardsSection from '../components/sections/MenuBoardsSection';
 
 const PageWrapper = styled.div`
   min-height: 80vh;
@@ -11,7 +12,7 @@ const PageWrapper = styled.div`
 const HeroSection = styled.section`
   background: linear-gradient(135deg, ${props => props.theme.colors.secondary} 0%, #ea580c 100%);
   color: ${props => props.theme.colors.white};
-  padding: ${props => props.theme.spacing['4xl']} 0;
+  padding: ${props => props.theme.spacing.xl} 0;
   text-align: center;
 `;
 
@@ -27,19 +28,46 @@ const PageTitle = styled(motion.h1)`
 
 const PageSubtitle = styled(motion.p)`
   font-size: ${props => props.theme.fontSizes.xl};
-  margin-bottom: ${props => props.theme.spacing['2xl']};
+  margin-bottom: ${props => props.theme.spacing.xl};
   opacity: 0.9;
 `;
 
+const StatsBar = styled(motion.div)`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: ${props => props.theme.spacing.lg};
+  margin-bottom: ${props => props.theme.spacing['2xl']};
+  
+  @media (max-width: ${props => props.theme.breakpoints.md}) {
+    flex-direction: column;
+    gap: ${props => props.theme.spacing.md};
+  }
+`;
+
+const StatBadge = styled.div`
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: ${props => props.theme.borderRadius.full};
+  padding: ${props => props.theme.spacing.sm} ${props => props.theme.spacing.lg};
+  font-size: ${props => props.theme.fontSizes.sm};
+  font-weight: ${props => props.theme.fontWeights.medium};
+  white-space: nowrap;
+  
+  @media (max-width: ${props => props.theme.breakpoints.sm}) {
+    text-align: center;
+  }
+`;
+
 const ContentSection = styled.section`
-  padding: ${props => props.theme.spacing['4xl']} 0;
+  padding: ${props => props.theme.spacing.xl} 0;
 `;
 
 const FeatureGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  gap: ${props => props.theme.spacing['2xl']};
-  margin-bottom: ${props => props.theme.spacing['4xl']};
+  gap: ${props => props.theme.spacing.lg};
+  margin-bottom: ${props => props.theme.spacing.xl};
 
   @media (min-width: ${props => props.theme.breakpoints.md}) {
     grid-template-columns: repeat(2, 1fr);
@@ -52,15 +80,36 @@ const FeatureGrid = styled.div`
 
 const FeatureCard = styled(motion.div)`
   background: ${props => props.theme.colors.white};
-  padding: ${props => props.theme.spacing['2xl']};
   border-radius: ${props => props.theme.borderRadius['2xl']};
   box-shadow: ${props => props.theme.shadows.md};
-  text-align: center;
+  overflow: hidden;
+  text-align: left;
+
+  .image-section {
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover img {
+    transform: scale(1.05);
+  }
+
+  .content-section {
+    padding: ${props => props.theme.spacing.xl};
+  }
 
   h3 {
     font-size: ${props => props.theme.fontSizes.xl};
     color: ${props => props.theme.colors.gray[900]};
-    margin-bottom: ${props => props.theme.spacing.md};
+    margin-bottom: ${props => props.theme.spacing.sm};
   }
 
   p {
@@ -69,51 +118,25 @@ const FeatureCard = styled(motion.div)`
   }
 `;
 
-const IconWrapper = styled.div`
-  width: 60px;
-  height: 60px;
-  background: ${props => props.theme.colors.secondary};
-  border-radius: ${props => props.theme.borderRadius.xl};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto ${props => props.theme.spacing.lg} auto;
-
-  svg {
-    width: 30px;
-    height: 30px;
-    color: ${props => props.theme.colors.white};
-  }
-`;
-
 const Marketing: React.FC = () => {
   const features = [
     {
-      title: 'Drive Sales with Digital Menu Boards',
-      description: 'Increase average order value by 15% with dynamic menu displays that promote high-margin items and limited-time offers.',
-      icon: (
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-        </svg>
-      )
+      title: 'Drive-Thru Digital Transformation',
+      description: 'Capture 70% of QSR revenue potential with digital menu boards that increase order values by 2.5% and promotional conversion by 2%. Only 19.3% of competitors have adopted this technology.',
+      image: '/images/signage/SageNet-blog-drive-thru-technology.jpg',
+      imageAlt: 'Digital menu boards in a restaurant drive-thru showing dynamic food offerings and pricing'
     },
     {
-      title: 'Create Engaging Store Experiences',
-      description: 'Transform your locations with interactive displays that guide customers, showcase products, and strengthen brand connections.',
-      icon: (
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-        </svg>
-      )
+      title: 'Forecourt & Pump-Side Optimization',
+      description: 'Engage captive customers during 3-4 minute fueling sessions with contactless ordering that brings the store to the forecourt. Perfect for food-to-go focused convenience operations.',
+      image: '/images/signage/SageNet-blog-Restaurant-Signage.jpg',
+      imageAlt: 'Restaurant digital signage displaying promotional combo menu in modern dining environment'
     },
     {
-      title: 'Ensure Brand Consistency',
-      description: 'Maintain perfect brand standards across all locations with centralized content management and real-time updates.',
-      icon: (
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-      )
+      title: 'Operational Cost Reduction',
+      description: 'Save $30,000 annually per location by eliminating printing costs and manual menu updates. Centralized content management reduces labor while ensuring brand consistency.',
+      image: '/images/signage/SageNet-blog-Signage-Small-Stores.jpg',
+      imageAlt: 'Digital signage in retail store showing promotional content and sale information'
     }
   ];
 
@@ -126,16 +149,27 @@ const Marketing: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            Drive Sales with Digital Experiences
+            Drive Sales & Marketing Results That Scale
           </PageTitle>
           <PageSubtitle
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Transform your retail locations into revenue-generating experiences that 
-            customers love and your bottom line will thank you for.
+            Marketing leaders at multi-site restaurant and retail chains choose SageNet to execute 
+            revenue-driving digital experiences that increase average order values, improve brand 
+            consistency, and deliver measurable ROI across every location.
           </PageSubtitle>
+          <StatsBar
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          >
+            <StatBadge>33% Sales Increase Potential</StatBadge>
+            <StatBadge>70% Drive-Thru Revenue Opportunity</StatBadge>
+            <StatBadge>400% More Engagement vs Static</StatBadge>
+            <StatBadge>$30K Annual Operational Savings</StatBadge>
+          </StatsBar>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -160,16 +194,20 @@ const Marketing: React.FC = () => {
                 viewport={{ once: true }}
                 whileHover={{ y: -5 }}
               >
-                <IconWrapper>{feature.icon}</IconWrapper>
-                <h3>{feature.title}</h3>
-                <p>{feature.description}</p>
+                <div className="image-section">
+                  <img src={feature.image} alt={feature.imageAlt} />
+                </div>
+                <div className="content-section">
+                  <h3>{feature.title}</h3>
+                  <p>{feature.description}</p>
+                </div>
               </FeatureCard>
             ))}
           </FeatureGrid>
-
-          <MarketingROICalculator />
         </div>
       </ContentSection>
+
+      <MenuBoardsSection />
     </PageWrapper>
   );
 };

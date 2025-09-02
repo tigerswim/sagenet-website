@@ -23,13 +23,18 @@ const Nav = styled.nav`
 `;
 
 const Logo = styled(Link)`
-  font-size: ${props => props.theme.fontSizes['2xl']};
-  font-weight: ${props => props.theme.fontWeights.bold};
-  color: ${props => props.theme.colors.primary};
+  display: flex;
+  align-items: center;
   text-decoration: none;
+  
+  img {
+    height: 40px;
+    width: auto;
+    transition: opacity 0.2s ease;
+  }
 
-  &:hover {
-    color: ${props => props.theme.colors.navy[700]};
+  &:hover img {
+    opacity: 0.8;
   }
 `;
 
@@ -102,7 +107,9 @@ const Header: React.FC = () => {
     <HeaderWrapper>
       <div className="container">
         <Nav>
-          <Logo to="/">SageNet</Logo>
+          <Logo to="/">
+            <img src="/images/logo/sagenet-logo-2023.webp" alt="SageNet" />
+          </Logo>
           
           <NavLinks>
             <NavLink to="/marketing">For Marketing</NavLink>

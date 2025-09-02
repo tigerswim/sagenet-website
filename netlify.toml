@@ -9,3 +9,5 @@
 
 [build.environment]
   NODE_VERSION = "18"
+  # Disable Next.js plugin for Create React App
+  NETLIFY_NEXT_PLUGIN_SKIP = "true"
