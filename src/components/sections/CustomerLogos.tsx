@@ -63,7 +63,7 @@ const TestimonialSection = styled(motion.div)`
 `;
 
 const TestimonialQuote = styled.blockquote`
-  background: ${props => props.theme.colors.gray[900]};
+  background: ${props => props.theme.colors.navy[900]};
   color: ${props => props.theme.colors.white};
   padding: ${props => props.theme.spacing.lg} ${props => props.theme.spacing.lg};
   font-family: Georgia, 'Times New Roman', Times, serif;
@@ -77,6 +77,7 @@ const TestimonialQuote = styled.blockquote`
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
+  border-radius: ${props => props.theme.borderRadius['2xl']};
 
   &::before {
     content: '';

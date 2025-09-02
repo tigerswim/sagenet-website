@@ -20,8 +20,9 @@ const Container = styled.div`
 `;
 
 const SectionHeader = styled(motion.div)`
-  text-align: center;
-  margin-bottom: ${props => props.theme.spacing.md};
+  text-align: left;
+  margin-bottom: ${props => props.theme.spacing.lg};
+  max-width: 800px;
 `;
 
 const Headline = styled.h2`
@@ -36,8 +37,6 @@ const Subtext = styled.p`
   font-size: ${props => props.theme.fontSizes.xl};
   color: ${props => props.theme.colors.gray[200]};
   line-height: 1.6;
-  max-width: 700px;
-  margin: 0 auto ${props => props.theme.spacing.xl};
 `;
 
 const AdvantageGrid = styled.div`

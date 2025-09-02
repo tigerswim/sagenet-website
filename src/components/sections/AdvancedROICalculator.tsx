@@ -16,21 +16,22 @@ const Container = styled.div`
 `;
 
 const SectionHeader = styled(motion.div)`
-  text-align: center;
-  margin-bottom: ${props => props.theme.spacing.md};
+  text-align: left;
+  margin-bottom: ${props => props.theme.spacing.lg};
+  max-width: 800px;
   
   h2 {
     font-size: ${props => props.theme.fontSizes['4xl']};
     font-weight: ${props => props.theme.fontWeights.bold};
     color: ${props => props.theme.colors.gray[900]};
-    margin-bottom: ${props => props.theme.spacing.md};
+    margin-bottom: ${props => props.theme.spacing.lg};
+    line-height: 1.2;
   }
   
   p {
     font-size: ${props => props.theme.fontSizes.xl};
     color: ${props => props.theme.colors.gray[600]};
-    max-width: 600px;
-    margin: 0 auto;
+    line-height: 1.6;
   }
 `;
 
